@@ -1,0 +1,36 @@
+.tabs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width:800px) {
+    .tab-group{
+        width:100vw;
+    }
+    ::ng-deep .mat-tab-labels{
+        justify-content:space-around !important;
+    }
+}
+.word-search:before{
+    content: "";
+    z-index: -1;
+    background: url("src/assets/bg.jpg");
+    opacity: .4;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+}
+.odometer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+}
+.odometer > div{
+    padding: 10px;
+    font-size: larger;
+    font-weight: bolder;
+}

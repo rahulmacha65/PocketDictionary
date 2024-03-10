@@ -1,0 +1,23 @@
+<mat-card style="background-color: black; height: 15px;">
+    <mat-card-title class="title">
+        <div class="theme">
+            <mat-slide-toggle (click)="ToggleTheme()" color="primary" *ngIf="userName">
+            </mat-slide-toggle>
+        </div>
+        <div class="heading">
+            Digital Pocket Dictionary
+        </div>
+        <div>
+            <div class="person" (click)="showLogout()" *ngIf="userName">
+                <span class="userName">{{userName | titlecase}}</span>
+                <mat-icon>person</mat-icon>
+            </div>
+            <div class="logout" *ngIf="loggingOut" >
+                <button mat-button  (click)="Logout()">Logout</button>
+            </div>
+        </div>
+    </mat-card-title>   
+</mat-card> 
+<div id="body">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,130 @@
+
+<div class="login-form Anime" *ngIf="userLogin">
+    <mat-card class="card">
+        <mat-card-title style="text-align: center;">Sign In</mat-card-title>
+        <form [formGroup]="loginForm">
+            <mat-card-content class="example-card">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email Id" type="text" formControlName="userName" autocomplete="off">
+                    <mat-error *ngIf="email?.invalid && email?.touched">
+                        Please enter valid email.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error *ngIf="password?.hasError('required') && password?.touched">
+                        Please enter password.
+                    </mat-error>
+                    <mat-error *ngIf="password?.hasError('minlength') && password?.touched">
+                        Password length should be 8 or more.
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" (click)="login()">
+                    Sign in
+                </button>
+                <button class="gsi-material-button" (click)="googleSignUp()">
+                    <div class="gsi-material-button-state"></div>
+                    <div class="gsi-material-button-content-wrapper">
+                        <div class="gsi-material-button-icon">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
+                                <path fill="#EA4335"
+                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                                </path>
+                                <path fill="#4285F4"
+                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                                </path>
+                                <path fill="#FBBC05"
+                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                                </path>
+                                <path fill="#34A853"
+                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                                </path>
+                                <path fill="none" d="M0 0h48v48H0z"></path>
+                            </svg>
+                        </div>
+                        <span class="gsi-material-button-contents">Sign in with Google</span>
+                        <span style="display: none;">Sign in with Google</span>
+                    </div>
+                </button>
+                <div class="links">
+                    <span><a href="#" (click)="resetPassword()">Forgot password ?</a></span>
+                    <span>New around here? <a href="#" (click)="register()">Sign Up</a></span>
+                </div>
+            </mat-card-content>
+        </form>
+        <!-- <mat-card-footer class="example-footer">
+            <div>
+                Login is for tracking your history and saved words in the application not for the use of application.
+            </div>
+        </mat-card-footer> -->
+    </mat-card>
+</div>
+
+<div class="login-form Anime" *ngIf="!userLogin && !resetPasswordflag">
+    <mat-card class="card">
+        <mat-card-title style="text-align: center;">Sign Up</mat-card-title>
+        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+            <mat-card-content class="example-card">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="userName">
+                    <mat-error *ngIf="registerEmail?.invalid && registerEmail?.touched">
+                        Please enter valid email.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    <mat-error *ngIf="registerPassword?.hasError('required') && registerEmail?.touched">
+                        Please enter password.
+                    </mat-error>
+                    <mat-error *ngIf="registerPassword?.hasError('minlength')">
+                        Password length should be 8 or more.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" matInput formControlName="confirmPassword">
+                    <mat-error *ngIf="confirmPassword?.hasError('customError') && confirmPassword?.touched">
+                        Password mismatch.
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">
+                    Sign Up
+                </button>
+                <div style="text-align: end;margin-top:20px;font-family: cursive;">
+                    Click here to <a href="#" (click)="loginUser()">Sign In</a>
+                </div>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>
+
+<div class="login-form Anime" *ngIf="resetPasswordflag">
+    <mat-card class="card">
+        <mat-card-title style="text-align: center;">Reset Password</mat-card-title>
+        <mat-card-content class="example-card">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput #emailId>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" (click)="resetgmailPassword(emailId)">
+                Send link
+            </button>
+            <div *ngIf="resetLinkMessage" class="resetMessage">
+                {{resetLinkMessage}}
+            </div>
+            <div style="text-align: end;margin-top:20px;font-family: cursive;">
+                After password reset click here to <a href="#" (click)="loginUser()">Sign In</a>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

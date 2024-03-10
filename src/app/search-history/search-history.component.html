@@ -1,0 +1,19 @@
+<div class="container" *ngIf="history.length>0">
+    <mat-card *ngFor="let item of history" class="card">
+        <mat-card-title class="title">
+            <a [href]="navigateTo" matTooltip="click for more details" (click)="wordSelected(item.word)">{{item.word | titlecase}}</a>    
+            <span style="float: right;">
+                <mat-icon matTooltip="delete from history" (click)="deleteFromHistory(item.word)" style="cursor: pointer;">delete</mat-icon>
+            </span>
+        </mat-card-title>
+        <mat-card-content class="content">
+            <strong>Defination : </strong>
+            <span class="defination">{{item.meanings[0].definitions[0].definition}}</span>
+        </mat-card-content>
+        <mat-card-footer class="footer">
+            <div>searched on : 
+                {{item.time}}
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>

@@ -1,0 +1,29 @@
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    width:400px;
+    justify-content: center;
+    font-family: cursive;
+}
+.footer{
+    display: flex;
+    justify-content: flex-end;
+    margin:0px;
+    font-family: cursive;
+}
+.title{
+    text-align: center;
+    font-family: cursive;
+}
+.container{
+    height:80vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;  
+    font-family: cursive;
+}
+.card{
+    border: 2px solid darkturquoise;
+    border-left: 10px solid cadetblue;
+    margin-bottom:10px;
+    background-color: paleturquoise;
+}

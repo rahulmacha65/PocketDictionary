@@ -1,0 +1,49 @@
+.title{
+    display: flex;
+    justify-content: space-between;
+}
+.heading{
+    color: yellow;
+    font-family: cursive;
+    
+}
+.person{
+    color: white;
+    cursor: pointer;
+}
+.logout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid deepskyblue;
+    font-size: smaller;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: logout .5s linear;
+    margin-top:5px;
+    background-color: black;
+    color:yellow; 
+}
+.theme{
+    background-color: whitesmoke;
+    height:25px;
+    border-radius: 15px;
+    margin-left:-10px;
+}
+
+.userName{
+    font-size: smaller;
+}
+
+@keyframes logout {
+    0%{
+        transform: translateZ(100%)
+    }
+    50%{
+        transform: translateZ(50%);
+    }
+    100%{
+        transform: translateZ(0%);
+    }
+}
+

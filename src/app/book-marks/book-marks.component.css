@@ -1,0 +1,31 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    column-gap: 25px;
+    
+}
+.card{
+    border:2px solid green;
+    margin-top:10px;
+    font-family: cursive;
+    border-left: 10px solid green;
+    background-color: lightskyblue;
+}
+.footer{
+    display: flex;
+    flex-flow: row wrap;
+    width:500px;
+    text-align: center;
+    margin-left:10px;
+    
+}
+.container{
+    height:80vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;    
+}
+@media (max-width:800px) {
+    .footer{
+        width:100%;
+    }
+}
